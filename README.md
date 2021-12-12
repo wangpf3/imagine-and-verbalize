@@ -1,3 +1,3 @@
 # Imagine 💭 and Verbalize 🗣
 
-This is the temporay repository. Code and data will be released soon.
+This is a temporary repository. Code and data will be released soon.
