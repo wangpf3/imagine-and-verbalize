@@ -3,8 +3,6 @@
 ## Training
 Excute run.sh under scripts folder.
 
-We provide a sub set sampled from the complete skg datasets as the original files are too large.
-
 ## Inference
 Excute evaluate.sh under scripts folder.
 
