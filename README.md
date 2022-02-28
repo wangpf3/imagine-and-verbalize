@@ -20,25 +20,25 @@ Code folders:
 
 ## Learning to Imagine
 
-### Download the data
+### 1. Download the data
 
-The data for training the imagination module can be obtained from [link](https://drive.google.com/file/d/1mV6HfroEnyxS7eP8T9pGlX27EWru7glW/view?usp=sharing). After downloading, untar the data 'skg_multisource.tar.gz', and do
+The data for training the imagination module can be obtained from [link](https://drive.google.com/file/d/1mV6HfroEnyxS7eP8T9pGlX27EWru7glW/view?usp=sharing). After downloading, untar the file `skg_multisource.tar.gz`, and do
 ```bash
 cd imagination_learning 
 mkdir -p data
 mv skg_multisource ./data
 ```
 
-### Train a imagination module
+### 2. Train a imagination module
 
 ```bash
 base ./scripts/run.sh
 ```
-After training, the imagination module is saved to $IMAGINATION_CHECKPOINT='./checkpoint'. Then copy the file 'relation_vocab.json' in the folder './data/skg_multisource' to $IMAGINATION_CHECKPOINT for later use. 
+After training, the imagination module is saved to `$IMAGINATION_CHECKPOINT='./checkpoint'`. Then copy the file `relation_vocab.json` in the folder `./data/skg_multisource` to `$IMAGINATION_CHECKPOINT` for later use. 
 
 Alternatively, you can download our well-trained imagination module [checkpoint](https://drive.google.com/file/d/1GQFbirHjASKobcKwxfJGDJcLHXtNDcK4/view?usp=sharing).
 
-### Apply the imagination module to obtain the silver-standard SKGs of downstream datasets (optional)
+### 3. Apply the imagination module to obtain the silver-standard SKGs of downstream datasets (optional)
 
 We have provided the silver-standard SKGs for the downstream datasets in the `verbalization_learning` folder. If you want to use the trained imagination module to annotate your own dataset, do
 ```bash
@@ -54,11 +54,11 @@ tar zxvf data.tar.gz
 bash ./scripts/run.sh $IMAGINATION_CHECKPOINT
 ```
 
-### Key command line arguments to specify task/method
+Key command line arguments to specify the task / imagination module checkpoint
 
 ```plain
 dataset=commongen_inhouse/vist_concept2story/roc_concept2story
-graph_generator_dir=IMAGINATION_MODULE_CHECKPOINT_DIR
+graph_generator_dir=IMAGINATION_CHECKPOINT
 ```
 
 ## Citation
