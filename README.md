@@ -1,7 +1,7 @@
 # Imagine :thought_balloon: and Verbalize :speaking_head: 
 
 This is a Pytorch implementation for our ICLR 2022 paper: 
-Contextualized Scene Imagination for Generative Commonsense Reasoning [[arxiv](https://arxiv.org/abs/2112.06318)]
+Contextualized Scene Imagination for Generative Commonsense Reasoning [[arxiv](https://arxiv.org/abs/2112.06318)].
 
 Code folders: 
 
@@ -32,7 +32,7 @@ mv skg_multisource ./data
 ### 2. Train a imagination module
 
 ```bash
-base ./scripts/run.sh
+./scripts/run.sh
 ```
 After training, the imagination module is saved to `$IMAGINATION_CHECKPOINT='./checkpoint'`. Then copy the file `relation_vocab.json` in the folder `./data/skg_multisource` to `$IMAGINATION_CHECKPOINT` for later use. 
 
