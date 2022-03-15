@@ -54,10 +54,11 @@ tar zxvf data.tar.gz
 bash ./scripts/run.sh $IMAGINATION_CHECKPOINT
 ```
 
-Key command line arguments to specify the task / imagination module checkpoint
+Key command line arguments to specify the task / imagination module checkpoint / dataset-specific hyper-parameters
 
 ```plain
-dataset=commongen_inhouse/vist_concept2story/roc_concept2story
+dataset={commongen_inhouse/vist_concept2story/roc_concept2story}
+num_epoch={5 (for Concept2Sentence) / 10 (for Concept2Story)}
 graph_generator_dir=IMAGINATION_CHECKPOINT
 ```
 
