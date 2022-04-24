@@ -22,11 +22,11 @@ Code folders:
 
 ### 1. Download the data
 
-The data for training the imagination module can be obtained from [link](https://drive.google.com/file/d/1mV6HfroEnyxS7eP8T9pGlX27EWru7glW/view?usp=sharing). After downloading, untar the file `skg_multisource.tar.gz`, and do
+The data for training the imagination module can be obtained from [link](https://drive.google.com/file/d/1cRzwxyVAGvmS46Q852tvoiSxbCV2MQV1/view?usp=sharing). After downloading, untar the file `data_for_imagination.tar.gz`, and do
 ```bash
 cd imagination_learning 
-mkdir -p data
-mv skg_multisource ./data
+tar zxvf data_for_imagination.tar.gz
+mv data_for_imagination data
 ```
 
 ### 2. Train a imagination module
@@ -34,16 +34,27 @@ mv skg_multisource ./data
 ```bash
 ./scripts/run.sh
 ```
-After training, the imagination module is saved to `$IMAGINATION_CHECKPOINT='./checkpoint'`. Then copy the file `relation_vocab.json` in the folder `./data/skg_multisource` to `$IMAGINATION_CHECKPOINT` for later use. 
+After training, the imagination module is saved to `$IMAGINATION_CHECKPOINT_1='./checkpoint'`. Then copy the file `relation_vocab.json` in the folder `./data/skg_multisource` to `$IMAGINATION_CHECKPOINT_1` for later use. 
 
 Alternatively, you can download our well-trained imagination module [checkpoint](https://drive.google.com/file/d/1GQFbirHjASKobcKwxfJGDJcLHXtNDcK4/view?usp=sharing).
 
-### 3. Apply the imagination module to obtain the silver-standard SKGs of downstream datasets (optional)
+### 3. Customize the imagination module for downstream datasets (optional)
 
-We have provided the silver-standard SKGs for the downstream datasets in the `verbalization_learning` folder. If you want to use the trained imagination module to annotate your own dataset, do
+We can further fine-tune the imagination module on the silver-standard SKGs of the downstream dataset whose distribution of context and concepts is different from that of the continual-pretraining dataset used in Step 2.
+```bash
+./finetuning.sh $IMAGINATION_CHECKPOINT_1
+```
+
+The imagination_module is saved to `$IMAGINATION_CHECKPOINT_2='./checkpoint'` (different from `$IMAGINATION_CHECKPOINT_1`). Then again copy the file `relation_vocab.json` in the folder `./data/skg_multisource` to `$IMAGINATION_CHECKPOINT_2` for later use.
+
+### 4. Apply the imagination module to obtain the SKGs for downstream datasets
+
+We have provided the generated SKGs for the downstream datasets in the `verbalization_learning` folder. If you want to use the trained imagination module to annotate your own dataset, do
 ```bash
 ./evalulate.sh $IMAGINATION_CHECKPOINT $DATASET $SPLIT
 ```
+
+Note that the generated SKGs from this step is just for learning the verbalization module but not for inference since the imagination module makes use of the ground-truth prefix sentences.
 
 ## Learning to Verbalize
 
