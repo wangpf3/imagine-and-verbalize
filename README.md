@@ -51,7 +51,7 @@ The imagination_module is saved to `$IMAGINATION_CHECKPOINT_2='./checkpoint'` (d
 
 We have provided the generated SKGs for the downstream datasets in the `verbalization_learning` folder. If you want to use the trained imagination module to annotate your own dataset, do
 ```bash
-./evalulate.sh $IMAGINATION_CHECKPOINT_1/2 $DATASET $SPLIT
+./evalulate.sh $IMAGINATION_CHECKPOINT_1 (or 2 if you have done Step 3) $DATASET $SPLIT
 ```
 
 Note that the generated SKGs from this step is just for learning the verbalization module but not for inference since the imagination module makes use of the ground-truth prefix sentences.
@@ -62,7 +62,7 @@ Note that the generated SKGs from this step is just for learning the verbalizati
 ```bash
 cd verbalization_learning
 tar zxvf data.tar.gz
-bash ./scripts/run.sh $IMAGINATION_CHECKPOINT_1/2
+bash ./scripts/run.sh $IMAGINATION_CHECKPOINT_1 (or 2 if you have done Step 3)
 ```
 
 Key command line arguments to specify the task / imagination module checkpoint / dataset-specific hyper-parameters
