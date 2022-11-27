@@ -5,7 +5,7 @@ import json
 import torch
 
 from lib.utils.logging import get_logger
-from lib.utils.graph_evaluation import evaluate_graph, parse_and_save
+from lib.utils.graph_evaluation import parse_and_save
 from lib.model import Build_Model 
 from lib.utils.setup_dist import setup, cleanup
 
